@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>possystem.com</title>
+    <meta name="viewport"
+          content="height=device-height,width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href="assect/bootstrap/css/bootstrap.min.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="web_pos.css">
+    <link rel="stylesheet" href="assect/stylesheet/web_pos.css">
+    <link rel="stylesheet" href="assect/stylesheet/nav.css">
 </head>
 <body>
 <div class="sidebar">
@@ -15,9 +18,9 @@
     </a>
     <ul class="side-menu">
         <li><a href="#"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
-        <li><a href="#"><i class='bx bx-store-alt'></i>Shop</a></li>
-        <li class="active"><a href="#"><i class='bx bx-analyse'></i>Customer</a></li>
-        <li><a href="#"><i class='bx bx-message-square-dots'></i>Tickets</a></li>
+        <li><a href="#"><i class='bx bx-store-alt'></i>Bulling</a></li>
+        <li class="active"><a href="#"><i class='bx bxs-user'></i>Customer</a></li>
+        <li><a href="#"><i class='bx bx-message-square-dots'></i>Stock</a></li>
         <li><a href="#"><i class='bx bx-group'></i>Users</a></li>
         <li><a href="#"><i class='bx bx-cog'></i>Settings</a></li>
     </ul>
@@ -30,6 +33,62 @@
         </li>
     </ul>
 </div>
+<!-- Main Content -->
+<div class="content">
+    <!-- Navbar -->
+    <nav>
+        <i class='bx bx-menu'></i>
+        <form action="#">
+            <div class="form-input">
+                <input type="search" placeholder="Search...">
+                <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
+            </div>
+        </form>
+        <input type="checkbox" id="theme-toggle" hidden>
+        <label for="theme-toggle" class="theme-toggle"></label>
+        <a href="#" class="notif">
+            <i class='bx bx-bell'></i>
+            <span class="count">12</span>
+        </a>
+        <a href="#" class="profile">
+            <img src="assect/image/download.png">
+        </a>
+    </nav>
+
+    <!-- End of Navbar -->
+    <section class="customer">
+        <header>Customer From</header>
+        <form>
+            <div class="details">
+                <span class="title">Personal Details</span>
+                <div class="input-field">
+                    <div class="mb-3">
+                        <label for="first_name" class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="first_name" aria-describedby="first_name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="last_name" class="form-label">Last Name</label>
+                        <input type="text" class="form-control" id="last_name" aria-describedby="last_name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" aria-describedby="email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone_number" class="form-label">Phone Number</label>
+                        <input type="number" class="form-control" id="phone_number" aria-describedby="email">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">save</button>
+                <button type="reset" class="btn btn-danger">clear</button>
+                <button type="button" class="btn btn-warning delete">Delete</button>
+            </div>
+
+        </form>
+
+    </section>
+</div>
+
 <script src="assect/bootstrap/js/bootstrap.min.js"></script>
 <script src="javascript.js"></script>
 </body>
