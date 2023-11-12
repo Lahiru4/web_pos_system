@@ -1,4 +1,4 @@
-$('#Customer').css('display','none');
+$('#Customer').css('display','block');
 $('#Item').css('display','none');
 $('#Order').css('display','none');
 $('#orderDetails').css('display','none');
