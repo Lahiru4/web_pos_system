@@ -47,6 +47,8 @@ body.dark{
 body{
     background: var(--grey);
     overflow-x: hidden;
+    position: fixed;
+    width: 100%;
 }
 
 .sidebar{
@@ -180,53 +182,63 @@ body{
     margin-top: 40px;
 }
 
-.customer-box{
-    position: absolute;
-    top: 80px;
-    left: 300px;
-    width: 500px;
-    height: 800px;
-    border-radius: 20px;
-    background-color: white;
+/*customer start*/
+
+#preloader {
+    /*background: orange;*/
+    position: fixed;
+    z-index: 99999;
+    width: 100%;
+    height: 100%;
 }
 
-/*customer start*/
-.customer{
-    position: relative;
-    top: 20px;
-    width: 100%;
-    display: block;
-}
-header{
+#preloader-over-layer {
+    background: #212121;
     position: absolute;
-    top: 30px;
-    left: 5%;
-    font-size: 36px;
-    font-weight: 600;
-    margin-bottom: 10px;
-    color: var(--dark);
+    top:0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    opacity: 0.8;
 }
-.input-field{
-    display: flow-root;
+
+#outline {
+    stroke-dasharray: 2.42777px, 242.77666px;
+    stroke-dashoffset: 0;
+    -webkit-animation: anim 1.6s linear infinite;
+    animation: anim 1.6s linear infinite;
 }
-.details{
-    position: absolute;
-    top: 400px;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 75%;
-    background-color: white;
-    padding: 50px;
-    border-radius: 20px;
+
+@-webkit-keyframes anim {
+    12.5% {
+        stroke-dasharray: 33.98873px, 242.77666px;
+        stroke-dashoffset: -26.70543px;
+    }
+
+    43.75% {
+        stroke-dasharray: 84.97183px, 242.77666px;
+        stroke-dashoffset: -84.97183px;
+    }
+
+    100% {
+        stroke-dasharray: 2.42777px, 242.77666px;
+        stroke-dashoffset: -240.34889px;
+    }
 }
-.details span{
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--dark);
-}
-.details button{
-    align-items: center;
-}
-.delete{
-    display: none;
+
+@keyframes anim {
+    12.5% {
+        stroke-dasharray: 33.98873px, 242.77666px;
+        stroke-dashoffset: -26.70543px;
+    }
+
+    43.75% {
+        stroke-dasharray: 84.97183px, 242.77666px;
+        stroke-dashoffset: -84.97183px;
+    }
+
+    100% {
+        stroke-dasharray: 2.42777px, 242.77666px;
+        stroke-dashoffset: -240.34889px;
+    }
 }

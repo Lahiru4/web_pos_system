@@ -5,10 +5,11 @@
     <title>possystem.com</title>
     <meta name="viewport"
           content="height=device-height,width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
-    <link rel="stylesheet" href="assect/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assect/bootstrap-5.3.1-dist/css/bootstrap.min.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="assect/stylesheet/web_pos.css">
     <link rel="stylesheet" href="assect/stylesheet/nav.css">
+    <link rel="stylesheet" href="assect/stylesheet/normalize_css.css">
 </head>
 <body>
 <div class="sidebar">
@@ -18,10 +19,10 @@
     </a>
     <ul class="side-menu">
         <li><a href="#"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
-        <li><a href="#"><i class='bx bx-store-alt'></i>Bulling</a></li>
-        <li class="active"><a href="#"><i class='bx bxs-user'></i>Customer</a></li>
-        <li><a href="#"><i class='bx bx-message-square-dots'></i>Stock</a></li>
-        <li><a href="#"><i class='bx bx-group'></i>Users</a></li>
+        <li><a href="#" id="order_page"><i class='bx bx-store-alt'></i>Bulling</a></li>
+        <li class="active" id="customer-btn"><a href="#Customer" id="customer_page"><i class='bx bxs-user'></i>Customer</a></li>
+        <li><a href="#" id="item_page"><i class='bx bx-message-square-dots'></i>Stock</a></li>
+        <li><a href="#" id="order_details_page"><i class='bx bx-group'></i>Orders</a></li>
         <li><a href="#"><i class='bx bx-cog'></i>Settings</a></li>
     </ul>
     <ul class="side-menu">
@@ -34,7 +35,9 @@
     </ul>
 </div>
 <!-- Main Content -->
+
 <div class="content">
+
     <!-- Navbar -->
     <nav>
         <i class='bx bx-menu'></i>
@@ -54,42 +57,270 @@
             <img src="assect/image/download.png">
         </a>
     </nav>
-
     <!-- End of Navbar -->
-    <section class="customer">
-        <header>Customer From</header>
-        <form>
-            <div class="details">
-                <span class="title">Personal Details</span>
-                <div class="input-field">
-                    <div class="mb-3">
-                        <label for="first_name" class="form-label">First Name</label>
-                        <input type="text" class="form-control" id="first_name" aria-describedby="first_name">
+
+    <!-- Start of Customer -->
+    <main id="Customer">
+        <section>
+            <h1 class="customer_label">Customer</h1>
+            <div class="container form">
+                <div class="row">
+                        <div class="col">
+                            <form class="form_input">
+                                <div class="mb-3">
+                                    <label for="customer_id" class="form-label">Customer Id</label>
+                                    <input type="text" class="form-control" id="customer_id"
+                                           placeholder="Customer Id Here">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="customer_name" class="form-label">Customer Name</label>
+                                    <input type="text" class="form-control" id="customer_name"
+                                           placeholder="Customer Name Here">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="address" class="form-label">Address</label>
+                                    <textarea class="form-control" id="address" rows="3"
+                                              placeholder="Address Here"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="contact" class="form-label">Contact</label>
+                                    <input type="tel" class="form-control" id="contact" placeholder="Contact Here">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Email Here">
+                                </div>
+                                <div class="mt-1 button">
+                                    <button id="submitBtn" type="submit" class="btn btn-success">Submit</button>
+                                    <button id="updateBtn" type="button" class="btn btn-primary">Update</button>
+                                    <button type="button" class="btn btn-danger">Delete</button>
+                                    <button type="reset" class="btn btn-warning">Reset</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col table1">
+                            <table class="table" id="customerTable">
+                                <thead class="table-primary">
+                                <tr>
+                                    <th scope="col">Customer Id</th>
+                                    <th scope="col">Customer Name</th>
+                                    <th scope="col">Address</th>
+                                    <th scope="col">Contact</th>
+                                    <th scope="col">Email</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- End of Customer -->
+
+    <!-- Start of Items -->
+    <main id="Item">
+        <section>
+            <h1 class="item_label">Items</h1>
+            <div class="container form">
+                <div class="row">
+                    <div class="col">
+                        <form id="form_input">
+                            <div class="mb-3">
+                                <label for="item_code" class="form-label">Item code</label>
+                                <input type="text" class="form-control" id="item_code" placeholder="Item Code Here"
+                                       disabled>
+                            </div>
+                            <div class="mb-3">
+                                <label for="item_name" class="form-label">Item Name</label>
+                                <input type="text" class="form-control" id="item_name" placeholder="Item Name Here">
+                            </div>
+                            <div class="mb-3">
+                                <label for="price" class="form-label">Price</label>
+                                <input type="number" class="form-control" id="price" placeholder="Price Here">
+                            </div>
+                            <div class="mb-3">
+                                <label for="QtyOnHand" class="form-label">Qty on hand</label>
+                                <input type="number" class="form-control" id="QtyOnHand" placeholder="Qty On Hand Here">
+                            </div>
+                            <div class="mt-1 button">
+                                <button id="submitBtn1" type="submit" class="btn btn-success">Submit</button>
+                                <button id="updateBtn1" type="button" class="btn btn-primary">Update</button>
+                                <button type="button" class="btn btn-danger">Delete</button>
+                                <button type="reset" class="btn btn-warning">Reset</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="mb-3">
-                        <label for="last_name" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" id="last_name" aria-describedby="last_name">
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" aria-describedby="email">
-                    </div>
-                    <div class="mb-3">
-                        <label for="phone_number" class="form-label">Phone Number</label>
-                        <input type="number" class="form-control" id="phone_number" aria-describedby="email">
+                    <div class="col table1">
+                        <table class="table" id="itemTable">
+                            <thead class="table-primary">
+                            <tr>
+                                <th scope="col">Item Code</th>
+                                <th scope="col">Item Name</th>
+                                <th scope="col">Price Per Kg</th>
+                                <th scope="col">Qty On Hand</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-success">save</button>
-                <button type="reset" class="btn btn-danger">clear</button>
-                <button type="button" class="btn btn-warning delete">Delete</button>
             </div>
+        </section>
+    </main>
+    <!-- End of Items -->
+    <main id="Order">
+        <section>
+            <div class="container mb-5">
+                <div class="row">
+                    <div class="col-md-6 mt-3">
+                        <div class="card" id="orderDetails1">
+                            <div class="card-header text-center gradient-text">
+                                Order Details
+                            </div>
+                            <div class="m-3 col-md-11">
+                                <label for="item_code1" class="form-label">Item Code</label>
+                                <select class="form-select" aria-label="Disabled select example" id="item_code1">
+                                    <option selected>Select Item Code</option>
+                                </select>
+                            </div>
+                            <div class="m-3 col-md-11">
+                                <label for="item_name1" class="form-label">Item Name</label>
+                                <input type="text" class="form-control" id="item_name1" placeholder="Item Name Here" disabled>
+                            </div>
+                            <div class="m-3 col-md-11">
+                                <label for="price1" class="form-label">Price</label>
+                                <input type="number" class="form-control" id="price1" placeholder="Price Here" disabled>
+                            </div>
+                            <div class="m-3 col-md-11">
+                                <label for="qty_on_hand" class="form-label">Qty on Hand</label>
+                                <input type="number" class="form-control" id="qty_on_hand" placeholder="Qty on hand Here" disabled>
+                            </div>
+                            <div class="m-3 col-md-11">
+                                <label for="getQty" class="form-label">Getting Qty</label>
+                                <input type="number" class="form-control" id="getQty" placeholder="Qty Here">
+                            </div>
+                            <div class="m-3" id="button1">
+                                <button id="addBtn" type="submit" class="btn btn-success">Add</button>
+                                <button id="UpdateBtn3" type="button" class="btn btn-primary">Update</button>
+                                <button id="removeBtn" type="button" class="btn btn-danger">Remove</button>
+                                <button id="resetItemDetailsBtn" type="reset" class="btn btn-warning">Reset</button>
+                            </div>
+                            <div class="col m-3">
+                                <table class="table" id="item-order-table">
+                                    <thead class="table-primary">
+                                    <tr>
+                                        <th scope="col">Item Code</th>
+                                        <th scope="col">Item Name</th>
+                                        <th scope="col">Price Per Kg</th>
+                                        <th scope="col">Qty On Hand</th>
+                                        <th scope="col">Qty</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <div class="card" id="invoiceDetails">
+                            <div class="card-header text-center gradient-text">
+                                Invoice Details
+                            </div>
+                            <div class="mb-3 col-md-11 mt-3">
+                                <label for="order_date" class="form-label">Order Date</label>
+                                <input type="date" class="form-control" id="order_date" placeholder="Order Date Here" disabled>
+                            </div>
+                            <div class="mb-3 col-md-11">
+                                <label for="order_id" class="form-label">Order Id</label>
+                                <input type="text" class="form-control" id="order_id" placeholder="Order Id Here" disabled>
+                            </div>
+                            <div class="mb-3 col-md-11">
+                                <label for="customer_id1" class="form-label">Customer Id</label>
+                                <select class="form-select" aria-label="Disabled select example" id="customer_id1">
+                                    <option selected>Select Customer Id</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 col-md-11">
+                                <label for="customer_name1" class="form-label">Customer Name</label>
+                                <input type="text" class="form-control" id="customer_name1" placeholder="Customer Name Here" disabled>
+                            </div>
+                            <div class="mb-3 col-md-11">
+                                <label for="total" class="form-label">Total</label>
+                                <input type="number" class="form-control" id="total" placeholder="Total Here" disabled>
+                            </div>
+                            <div class="mb-3 col-md-11">
+                                <label for="discount" class="form-label">Discount</label>
+                                <input type="number" class="form-control" id="discount" placeholder="Discount in percentage Here">
+                            </div>
+                            <div class="mb-3 col-md-11">
+                                <label for="sub_total" class="form-label">Sub Total</label>
+                                <input type="number" class="form-control" id="sub_total" placeholder="Sub Total Here" disabled>
+                            </div>
+                            <div class="mb-3 col-md-11">
+                                <label for="Cash" class="form-label">Cash</label>
+                                <input type="number" class="form-control" id="Cash" placeholder="Cash Here">
+                            </div>
+                            <div class="mb-3 col-md-11">
+                                <label for="balance" class="form-label">Balance</label>
+                                <input type="number" class="form-control" id="balance" placeholder="Balance Here" disabled>
+                            </div>
+                            <div class="mt-1 mb-3" id="button">
+                                <button id="submitBtn2" type="submit" class="btn btn-success">Purchase</button>
+                                <button id="updateBtn2" type="button" class="btn btn-primary">Update</button>
+                                <button id="deleteBtn2" type="button" class="btn btn-danger">Delete</button>
+                                <button id="resetBtn2" type="reset" class="btn btn-warning">Reset</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-        </form>
+    <main id="orderDetails">
+        <section>
+            <div id="form">
+                <div class="text-center gradient-text">
+                    <h3>Order Details Form</h3>
+                </div>
 
-    </section>
+                <div class="col table1">
+                    <table class="table" id="item-details-table">
+                        <thead class="table-primary">
+                        <tr>
+                            <th scope="col">Order Id</th>
+                            <th scope="col">Order Date</th>
+                            <th scope="col">Customer Id</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Discount</th>
+                            <th scope="col">Sub Total</th>
+                            <th scope="col">Cash</th>
+                            <th scope="col">Balance</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
 </div>
+<script type="module" src="controller/customerController.js"></script>
+<script type="module" src="controller/indexController..js"></script>
+<script type="module" src="controller/orderController.js"></script>
+<script type="module" src="controller/orderDetailsController.js"></script>
+<script type="module" src="controller/itemController.js"></script>
+<script src="script/javascript.js"></script>
+<script src="assect/bootstrap-5.3.1-dist/js/bootstrap.min.js"></script>
+<script src="script/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-<script src="assect/bootstrap/js/bootstrap.min.js"></script>
-<script src="javascript.js"></script>
 </body>
 </html>
